@@ -1,0 +1,18 @@
+# Build outputs
+*.obj
+*.res
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Local generated package
+dist/
+
+# Editor and system files
+.vs/
+.vscode/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
