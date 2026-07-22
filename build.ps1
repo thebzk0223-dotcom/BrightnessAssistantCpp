@@ -3,10 +3,7 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $src = Join-Path $root "src"
 $dist = Join-Path $root "dist"
-$productName = -join ([char[]](
-  0x5c4f,0x5e55,0x4eae,0x5ea6,0x8c03,0x8282,0x52a9,0x624b,
-  0x20,0x2d,0x20,0x54,0x68,0x65,0x62,0x7a,0x6b,0x40,0x35,0x32,0x70,0x6f,0x6a,0x69,0x65
-))
+$productName = "BrightnessAssistant"
 $out = Join-Path $dist ($productName + ".exe")
 $vcvars64 = "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"
 $vcvars64Alt = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
