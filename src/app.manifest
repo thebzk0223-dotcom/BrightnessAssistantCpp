@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-  <assemblyIdentity version="1.0.0.0" processorArchitecture="*" name="NetworkCenter.BrightnessAssistant" type="win32"/>
-  <description>屏幕亮度调节助手 - 网络中心制作</description>
+  <assemblyIdentity version="1.0.0.0" processorArchitecture="*" name="Thebzk.BrightnessAssistant" type="win32"/>
+  <description>屏幕亮度调节助手 - Thebzk@52pojie</description>
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
     <security>
       <requestedPrivileges>

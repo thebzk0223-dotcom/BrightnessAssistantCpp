@@ -25,10 +25,10 @@
 namespace {
 
 constexpr wchar_t APP_NAME[] = L"\u5c4f\u5e55\u4eae\u5ea6\u8c03\u8282\u52a9\u624b";
-constexpr wchar_t COPYRIGHT_TEXT[] = L"\u00a9 2026 \u9ec4\u660e\u535a";
+constexpr wchar_t COPYRIGHT_TEXT[] = L"\u00a9 2026 Thebzk@52pojie";
 constexpr wchar_t ADMIN_OK[] = L"\u7ba1\u7406\u5458\u6743\u9650";
 constexpr wchar_t ADMIN_NO[] = L"\u975e\u7ba1\u7406\u5458";
-constexpr wchar_t REG_KEY[] = L"Software\\NetworkCenter\\BrightnessAssistant";
+constexpr wchar_t REG_KEY[] = L"Software\\Thebzk\\BrightnessAssistant";
 constexpr wchar_t TASK_NAME[] = L"\u5c4f\u5e55\u4eae\u5ea6\u8c03\u8282\u52a9\u624b";
 
 constexpr UINT WM_TRAY = WM_APP + 1;
@@ -138,7 +138,7 @@ std::wstring ProgramDataInstallPath() {
     wchar_t programData[MAX_PATH]{};
     DWORD len = GetEnvironmentVariableW(L"ProgramData", programData, MAX_PATH);
     std::wstring base = (len > 0 && len < MAX_PATH) ? programData : L"C:\\ProgramData";
-    return base + L"\\NetworkCenterBrightnessAssistant\\BrightnessAssistant.exe";
+    return base + L"\\ThebzkBrightnessAssistant\\BrightnessAssistant.exe";
 }
 
 std::wstring EnsureStartupExePath() {
@@ -435,7 +435,7 @@ void EnsureOverlayWindow() {
     int h = GetSystemMetrics(SM_CYVIRTUALSCREEN);
     g_overlay = CreateWindowExW(
         WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW | WS_EX_TOPMOST | WS_EX_NOACTIVATE,
-        L"NetworkCenterBrightnessTintOverlay",
+        L"ThebzkBrightnessTintOverlay",
         L"",
         WS_POPUP,
         x, y, w, h,
@@ -898,7 +898,7 @@ void RegisterClass() {
     WNDCLASSW wc{};
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = g_instance;
-    wc.lpszClassName = L"NetworkCenterBrightnessAssistantWindow";
+    wc.lpszClassName = L"ThebzkBrightnessAssistantWindow";
     wc.hCursor = LoadCursorW(nullptr, IDC_ARROW);
     wc.hIcon = LoadIconW(g_instance, MAKEINTRESOURCEW(IDI_APP));
     wc.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
@@ -907,7 +907,7 @@ void RegisterClass() {
     WNDCLASSW overlay{};
     overlay.lpfnWndProc = OverlayProc;
     overlay.hInstance = g_instance;
-    overlay.lpszClassName = L"NetworkCenterBrightnessTintOverlay";
+    overlay.lpszClassName = L"ThebzkBrightnessTintOverlay";
     overlay.hCursor = LoadCursorW(nullptr, IDC_ARROW);
     overlay.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
     RegisterClassW(&overlay);
@@ -920,10 +920,10 @@ int APIENTRY wWinMain(HINSTANCE instance, HINSTANCE, LPWSTR, int) {
     Gdiplus::GdiplusStartupInput gdiplusInput;
     Gdiplus::GdiplusStartup(&g_gdiplusToken, &gdiplusInput, nullptr);
 
-    HANDLE mutex = CreateMutexW(nullptr, TRUE, L"Local\\NetworkCenterBrightnessAssistant");
+    HANDLE mutex = CreateMutexW(nullptr, TRUE, L"Local\\ThebzkBrightnessAssistant");
     if (mutex && GetLastError() == ERROR_ALREADY_EXISTS) {
         if (!HasArg(L"/startup")) {
-            HWND existing = FindWindowW(L"NetworkCenterBrightnessAssistantWindow", nullptr);
+            HWND existing = FindWindowW(L"ThebzkBrightnessAssistantWindow", nullptr);
             if (existing) {
                 ShowWindow(existing, SW_SHOW);
                 SetForegroundWindow(existing);
@@ -936,7 +936,7 @@ int APIENTRY wWinMain(HINSTANCE instance, HINSTANCE, LPWSTR, int) {
     LoadSettings();
     RegisterClass();
 
-    HWND hwnd = CreateWindowExW(WS_EX_APPWINDOW, L"NetworkCenterBrightnessAssistantWindow", APP_NAME,
+    HWND hwnd = CreateWindowExW(WS_EX_APPWINDOW, L"ThebzkBrightnessAssistantWindow", APP_NAME,
                                WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
                                CW_USEDEFAULT, CW_USEDEFAULT, 472, 388,
                                nullptr, nullptr, instance, nullptr);

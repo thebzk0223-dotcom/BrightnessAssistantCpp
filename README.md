@@ -37,7 +37,7 @@ powershell -ExecutionPolicy Bypass -File .\build.ps1
 编译后的程序会生成在：
 
 ```text
-dist\屏幕亮度调节助手 - 网络中心制作.exe
+dist\屏幕亮度调节助手 - Thebzk@52pojie.exe
 ```
 
 ## 说明
@@ -48,4 +48,4 @@ dist\屏幕亮度调节助手 - 网络中心制作.exe
 
 ## 版权
 
-© 2026 黄明博
+© 2026 Thebzk@52pojie

@@ -6,9 +6,6 @@
 *.exp
 *.lib
 
-# Local generated package
-dist/
-
 # Editor and system files
 .vs/
 .vscode/
